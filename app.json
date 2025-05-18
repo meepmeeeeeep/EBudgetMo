@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "porj",
-    "slug": "snack-045b9c12-a0fc-4456-b420-82b3cb5403c5",
+    "name": "E-Budget Mo!",
+    "slug": "e-budget-mo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,14 +20,15 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.qjwpl.ebudgetmo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "0b8667b6-ed5a-466b-b625-23ed20acd97f"
+        "projectId": "23acfd05-7440-4c06-91b1-050a120eb470"
       }
     }
   }
