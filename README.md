@@ -1,4 +1,4 @@
-# e-budgetmo!
+# E-BudgetMo!
 
 ## A Personal  Finance  Tracker  Mobile Application
 
