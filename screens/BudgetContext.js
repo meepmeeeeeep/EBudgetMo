@@ -300,6 +300,33 @@ export const BudgetProvider = ({ children }) => {
     }
   }, [monthlyData, selectedMonth, currentBudget]);
 
+  const updateSavingsGoal = useCallback(async (newSavingsGoal) => {
+    if (typeof newSavingsGoal !== 'number' || newSavingsGoal < 0) {
+      console.error('Invalid savings goal value');
+      return;
+    }
+
+    try {
+      const updatedData = {
+        ...monthlyData,
+        [selectedMonth]: {
+          ...(monthlyData[selectedMonth] || getDefaultMonthData()),
+          savingsGoal: newSavingsGoal
+        }
+      };
+
+      // Update state
+      setMonthlyData(updatedData);
+
+      // Persist to storage
+      if (Platform.OS !== 'web') {
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData));
+      }
+    } catch (error) {
+      console.error('Error updating savings goal:', error);
+    }
+  }, [monthlyData, selectedMonth]);
+
   const updateMonthlyExpenses = (expenses) => {
     const currentMonthKey = selectedMonth;
     setMonthlyData(prev => {
@@ -467,7 +494,8 @@ export const BudgetProvider = ({ children }) => {
         getCurrentMonthData,
         getSelectedMonthData,
         getPreviousMonthData,
-        updateCategoryBudgets
+        updateCategoryBudgets,
+        updateSavingsGoal
       }}
     >
       {children}

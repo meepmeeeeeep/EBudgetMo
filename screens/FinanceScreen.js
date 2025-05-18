@@ -28,7 +28,8 @@ const ExpenseTrackerScreen = () => {
     getSelectedMonthData,
     getPreviousMonthData,
     updateBudget,
-    updateCategoryBudgets
+    updateCategoryBudgets,
+    updateSavingsGoal
   } = useBudget();
 
   const navigation = useNavigation();
@@ -277,7 +278,7 @@ const ExpenseTrackerScreen = () => {
     setBudget(budgetValue);
   };
  
-  const updateSavingsGoal = () => {
+  const handleSavingsGoalUpdate = () => {
     const savingsValue = parseFloat(tempSavingsGoal);
     if (isNaN(savingsValue) || savingsValue < 0) {
       Alert.alert('Invalid Amount', 'Please enter a valid savings goal');
@@ -285,6 +286,7 @@ const ExpenseTrackerScreen = () => {
     }
    
     setSavingsGoal(savingsValue);
+    updateSavingsGoal(savingsValue);
     setSavingsModalVisible(false);
   };
  
@@ -873,7 +875,7 @@ const ExpenseTrackerScreen = () => {
             </View>
            
             {/* Save Button */}
-            <TouchableOpacity style={styles.saveButton} onPress={updateSavingsGoal}>
+            <TouchableOpacity style={styles.saveButton} onPress={handleSavingsGoalUpdate}>
               <Text style={styles.saveButtonText}>Save Goal</Text>
             </TouchableOpacity>
           </View>
